@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const validInfo = require('../middleware/validInfo')
 const pool = require('../db/db')
 
-router.post('/register', async (req, res) => {
+router.post('/register', validInfo, async (req, res) => {
   try {
     const { Name, Email, Password } = req.body
     const user = await pool.query('SELECT * FROM users WHERE Email = $1', [
@@ -25,7 +26,7 @@ router.post('/register', async (req, res) => {
   }
 })
 
-router.get('/login', async (req, res) => {
+router.get('/login', validInfo, async (req, res) => {
   try {
     const { Email, Password } = req.body
     const user = await pool.query('SELECT * FROM users WHERE Email = $1', [
