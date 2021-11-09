@@ -12,5 +12,5 @@ app.use('/auth', require('./routes/auth'))
 app.use('/notes', require('./routes/notes'))
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log('server is up!')
 })
