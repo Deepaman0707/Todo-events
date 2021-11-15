@@ -10,8 +10,9 @@ CREATE TABLE users (
 
 CREATE TABLE Cards (
     card_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
     title VARCHAR(50) NOT NULL,
-    description VARCHAR(255) NOT NULL UNIQUE,
+    description VARCHAR(255) NOT NULL,
     tag VARCHAR(50) NOT NULL DEFAULT 'General',
     Date DATE 
 );
