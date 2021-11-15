@@ -2,45 +2,45 @@ const express = require('express')
 const router = express.Router()
 const pool = require('../db/db')
 const { body, validationResult } = require('express-validator')
+const authorization = require('../middleware/authorization')
+
+router.get('/fetchnotes', authorization, async (req, res) => {
+  try {
+    const cards = await pool.query('SELECT * FROM cards WHERE user_id = $1', [
+      req.id,
+    ])
+
+    res.json(cards.rows)
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send(err.message)
+  }
+})
 
 router.post(
-  '/add',
+  '/createnote',
   [
-    body('title', 'Title must be atleast 3 characters.').isLength({
-      min: 3,
-    }),
-    body('description', 'Desccription must be atleast 5 characters.').isLength({
-      min: 5,
-    }),
+    body('title', 'Enter a title.').exists(),
+    body('description', 'Enter a Description.').exists(),
   ],
+  authorization,
   async (req, res) => {
     try {
-      const { title, description, tag, date } = req.body
-
       const errors = validationResult(req)
-      if (!errors.isEmpty()) {
+      if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() })
-      }
 
-      const card = await pool.query(
-        'SELECT * FROM cards WHERE description = $1',
-        [description]
+      const { title, description, tag } = req.body
+      await pool.query(
+        'INSERT INTO cards (user_id, title, description, tag, date) values ($1, $2, $3, $4, current_timestamp)',
+        [req.id, title, description, tag]
       )
 
-      if (card.rows.length !== 0)
-        return res.status(400).json('Card description already exist!')
-
-      const newCard = await pool.query(
-        'INSERT INTO cards (title, description, tag, date) values ($1, $2, $3, current_timestamp)',
-        [title, description, tag]
+      const cards = await pool.query(
+        'SELECT * from cards WHERE card_id = LASTVAL();'
       )
 
-      const data = await pool.query(
-        'SELECT * FROM cards WHERE description = $1',
-        [description]
-      )
-
-      res.send(data.rows[0])
+      res.json(cards.rows[0])
     } catch (err) {
       console.error(err.message)
       res.status(500).send(err.message)
@@ -48,19 +48,36 @@ router.post(
   }
 )
 
-router.get('/read', async (req, res) => {
+router.put('/updatenote/:id', authorization, async (req, res) => {
   try {
-    const { Email, Password } = req.body
-    const user = await pool.query('SELECT * FROM users WHERE Email = $1', [
-      Email,
+    const { id } = req.params
+    const { title, description, tag } = req.body
+    await pool.query(
+      'UPDATE cards SET title = $1, description = $2, tag = $3, date = current_timestamp WHERE card_id = $4',
+      [title, description, tag, id]
+    )
+
+    const card = await pool.query('SELECT * from cards WHERE card_id = $1;', [
+      id,
     ])
-    if (user.rows.length === 0) return res.status(401).json('User Not Found!!')
 
-    if (Password !== user.rows[0].password)
-      return res.status(401).json('Invalid Credentials')
+    res.json(card.rows[0])
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send(err.message)
+  }
+})
 
-    let User = await pool.query('SELECT * FROM users WHERE Email = $1', [Email])
-    res.send(User.rows[0])
+router.delete('/deletenote/:id', authorization, async (req, res) => {
+  try {
+    const { id } = req.params
+    const card = await pool.query('SELECT * from cards WHERE card_id = $1;', [
+      id,
+    ])
+
+    await pool.query('DELETE FROM cards WHERE card_id = $1', [id])
+
+    res.json(card.rows[0])
   } catch (err) {
     console.error(err.message)
     res.status(500).send(err.message)
