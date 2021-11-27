@@ -1,0 +1,30 @@
+.container {
+  margin-top: 60px;
+  margin-left: 10vw;
+}
+
+.fields {
+  margin: 20px;
+}
+
+.text {
+  width: 70vw;
+}
+
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.addcard {
+  position: absolute;
+  bottom: 30px;
+  margin-left: 80vw;
+  border-radius: 50%;
+}
