@@ -4,6 +4,8 @@ const pool = require('../db/db')
 const { body, validationResult } = require('express-validator')
 const authorization = require('../middleware/authorization')
 
+// Route 1: To fetch notes from the database.
+
 router.get('/fetchnotes', authorization, async (req, res) => {
   try {
     const cards = await pool.query('SELECT * FROM cards WHERE user_id = $1', [
@@ -16,6 +18,8 @@ router.get('/fetchnotes', authorization, async (req, res) => {
     res.status(500).send(err.message)
   }
 })
+
+// Route 2: To create notes and insert it into database.
 
 router.post(
   '/createnote',
@@ -48,6 +52,8 @@ router.post(
   }
 )
 
+// Route 3: To update notes into the database.
+
 router.put('/updatenote/:id', authorization, async (req, res) => {
   try {
     const { id } = req.params
@@ -67,6 +73,8 @@ router.put('/updatenote/:id', authorization, async (req, res) => {
     res.status(500).send(err.message)
   }
 })
+
+// Route 4: To delete notes from the database.
 
 router.delete('/deletenote/:id', authorization, async (req, res) => {
   try {

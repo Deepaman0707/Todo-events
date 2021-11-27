@@ -1,0 +1,17 @@
+.cards {
+  margin-top: 20px;
+}
+
+.header {
+  /* font-size: small; */
+  font-weight: bold;
+}
+
+.break {
+  height: 1px;
+  background-color: rgb(87, 9, 9);
+}
+
+.content {
+  background-color: rgb(255, 243, 221);
+}
