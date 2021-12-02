@@ -5,8 +5,6 @@ import { Routes } from 'react-router-dom'
 import Navbar from './Components/Navbar.js'
 import Home from './Components/Home.js'
 import About from './Components/About.js'
-import Search from './Components/Search'
-import Logout from './Components/Logout'
 import NoteState from './context/NoteState'
 
 function App() {
@@ -18,8 +16,6 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
-            <Route path='/search' element={<Search />} />
-            <Route path='/logout' element={<Logout />} />
           </Routes>
         </Router>
       </NoteState>
