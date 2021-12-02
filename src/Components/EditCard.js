@@ -4,28 +4,29 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import '../Styles/AddCard.css'
 
-const AddCard = (props) => {
+const EditCard = (props) => {
   const context = useContext(noteContext)
-  const { addNote } = context
+  const { editNote } = context
+  const { note } = props
 
-  const [note, setNote] = useState({
-    title: '',
-    description: '',
-    tag: '',
+  const [data, setData] = useState({
+    title: note.title,
+    description: note.description,
+    tag: note.tag,
   })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addNote(note.title, note.description, note.tag)
+    editNote(note.card_id, data.title, data.description, data.tag)
     props.handleClose()
   }
 
   const onChange = (e) => {
-    setNote({ ...note, [e.target.name]: e.target.value })
+    setData({ ...data, [e.target.name]: e.target.value })
   }
   return (
     <div>
-      <p className='heading'>Add New Card</p>
+      <p className='heading'>Edit Card</p>
       <form>
         <div className='fields'>
           <TextField
@@ -35,6 +36,7 @@ const AddCard = (props) => {
             variant='outlined'
             type='text'
             name='title'
+            value={data.title}
             onChange={onChange}
             required
           />
@@ -47,6 +49,7 @@ const AddCard = (props) => {
             variant='outlined'
             type='text'
             name='description'
+            value={data.description}
             onChange={onChange}
             required
           />
@@ -59,6 +62,7 @@ const AddCard = (props) => {
             variant='outlined'
             type='text'
             name='tag'
+            value={data.tag}
             onChange={onChange}
           />
         </div>
@@ -77,4 +81,4 @@ const AddCard = (props) => {
   )
 }
 
-export default AddCard
+export default EditCard

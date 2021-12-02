@@ -1,20 +1,22 @@
 .navbar {
   display: flex;
   list-style: none;
-  padding: 15px;
-  background-color: black;
+  padding: 0 35px;
+  background-color: rgb(30, 12, 58);
   font-size: 15px;
   font-weight: 600;
+  align-items: center;
+  height: 60px;
 }
 
 .option {
-  padding-right: 30px;
+  margin-left: 30px;
   text-decoration: none;
-  color: rgb(151, 151, 151);
+  color: rgb(194, 194, 194);
 }
 
 .todo {
-  padding-right: 30px;
+  font-size: large;
   text-decoration: none;
   color: rgb(255, 255, 255);
 }
@@ -23,10 +25,12 @@
   color: white;
 }
 
-.active{
+.active {
   color: white;
 }
 
-.logout {
+.icons {
+  display: flex;
+  flex-direction: row;
   margin-left: auto;
 }

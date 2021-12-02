@@ -1,9 +1,13 @@
-.cards {
-  margin-top: 20px;
+.cardbox {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 75vw;
 }
 
 .header {
-  /* font-size: small; */
   font-weight: bold;
 }
 
@@ -13,5 +17,17 @@
 }
 
 .content {
-  background-color: rgb(255, 243, 221);
+  background-color: rgb(240, 223, 255);
+}
+
+.action {
+  background-color: #bb98cf;
+}
+
+.icons {
+  color: #5f2680;
+}
+
+.icons:hover {
+  color: black;
 }
