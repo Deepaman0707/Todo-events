@@ -18,6 +18,7 @@ const AddCard = (props) => {
     e.preventDefault()
     addNote(note.title, note.description, note.tag)
     props.handleClose()
+    props.showAlert('Success', 'Successfully created a new note! ')
   }
 
   const onChange = (e) => {
@@ -65,6 +66,7 @@ const AddCard = (props) => {
         <div className='fields'>
           <Button
             className='submit'
+            disabled={note.title.length < 3 || note.description.length < 3}
             disableElevation
             variant='contained'
             onClick={handleSubmit}

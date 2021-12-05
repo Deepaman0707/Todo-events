@@ -1,0 +1,36 @@
+.login {
+  background-color: white;
+  padding: 10%;
+  width: 400px;
+  margin: auto;
+}
+
+.signup {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  margin-top: -5px;
+  
+}
+
+.fields {
+  display: flex;
+  align-items: center;
+}
+
+.signupicon {
+  padding-top: 10px;
+  padding-right: 3px;
+  padding-left: 10px;
+}
+
+.signupbox {
+  display: flex;
+  align-items: center;
+  color: blue;
+  text-decoration: none;
+}
+
+.heading{
+  margin-top: -20px;
+}

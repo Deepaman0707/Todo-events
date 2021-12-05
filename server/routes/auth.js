@@ -22,6 +22,7 @@ router.post(
   ],
   async (req, res) => {
     try {
+      let success = false
       // Verifying the input data using express validator.
       const errors = validationResult(req)
       if (!errors.isEmpty())
@@ -55,9 +56,9 @@ router.post(
       // Generating auth token using jwt package.
       const tokenData = data.rows[0].user_id
       const authToken = jwt.sign({ tokenData }, process.env.JWT_KEY)
-
+      success = true
       // Returning response : auth token
-      res.send({ authToken })
+      res.send({ success, authToken })
     } catch (err) {
       console.error(err.message)
       res.status(500).send(err.message)
@@ -75,6 +76,7 @@ router.post(
   ],
   async (req, res) => {
     try {
+      let success = false
       // Verifying the input data using express validator.
       const errors = validationResult(req)
       if (!errors.isEmpty())
@@ -102,9 +104,10 @@ router.post(
       // If the entered data is correct then generating auth token for that.
       const tokenData = user.rows[0].user_id
       const authToken = jwt.sign({ tokenData }, process.env.JWT_KEY)
+      success = true
 
       // Sending auth token as a response.
-      res.send({ authToken })
+      res.send({ success, authToken })
     } catch (err) {
       console.error(err.message)
       res.status(500).send(err.message)
