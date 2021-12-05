@@ -8,15 +8,15 @@ import AddIcon from '@mui/icons-material/Add'
 
 // import noteContext from '../context/noteContext'
 
-const Home = () => {
+const Home = (props) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-
+  const { showAlert } = props
   return (
     <div className='container'>
       <div className='cardbox'>
-        <Cards />
+        <Cards showAlert={showAlert} />
       </div>
       <button className='addcard' onClick={handleOpen}>
         <AddIcon style={{ fontSize: '30px' }} />
@@ -28,7 +28,7 @@ const Home = () => {
         aria-describedby='modal-modal-description'
       >
         <Box className='box'>
-          <AddCard handleClose={handleClose} />
+          <AddCard showAlert={showAlert} handleClose={handleClose} />
         </Box>
       </Modal>
     </div>

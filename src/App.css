@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  background-color: rgb(255, 253, 249);
+  background-image: url(C:\Users\deepa\Desktop\todo\src\images\84248.png);
+  background-attachment: fixed;
+  background-size: 2000px;
+  background-repeat: no-repeat;
+}
+
+.alertbox {
+  position: absolute;
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}

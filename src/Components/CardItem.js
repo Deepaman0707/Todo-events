@@ -20,7 +20,7 @@ const CardItem = (props) => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const { deleteNote } = context
-  const { note } = props
+  const { note, showAlert } = props
   return (
     <div className='cardbox'>
       <Card className='card' sx={{ borderRadius: '10px' }}>
@@ -47,6 +47,7 @@ const CardItem = (props) => {
             aria-label='delete'
             onClick={() => {
               deleteNote(note.card_id)
+              showAlert('Success', 'Successfully deleted the note!')
             }}
           >
             <DeleteOutlinedIcon className='icons' />
@@ -59,7 +60,11 @@ const CardItem = (props) => {
           aria-describedby='modal-modal-description'
         >
           <Box className='box'>
-            <EditCard note={note} handleClose={handleClose} />
+            <EditCard
+              showAlert={showAlert}
+              note={note}
+              handleClose={handleClose}
+            />
           </Box>
         </Modal>
       </Card>

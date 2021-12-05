@@ -1,14 +1,18 @@
 import React, { useEffect, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import noteContext from '../context/noteContext'
 import CardItem from './CardItem'
 import '../Styles/Cards.css'
 import Grid from '@mui/material/Grid'
 
-const Cards = () => {
+const Cards = (props) => {
+  const navigate = useNavigate()
   const context = useContext(noteContext)
   const { notes, fetchNote } = context
+  const { showAlert } = props
   useEffect(() => {
-    fetchNote()
+    if (localStorage.getItem('token')) fetchNote()
+    else navigate('/login')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -26,10 +30,7 @@ const Cards = () => {
               md={6}
               lg={4}
             >
-              <CardItem
-                key={note.card_id}
-                note={note}
-              />
+              <CardItem key={note.card_id} showAlert={showAlert} note={note} />
             </Grid>
           )
         })}

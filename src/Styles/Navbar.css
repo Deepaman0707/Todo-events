@@ -10,9 +10,16 @@
 }
 
 .option {
+  display: flex;
+  align-items: center;
   margin-left: 30px;
   text-decoration: none;
   color: rgb(194, 194, 194);
+  cursor: pointer;
+}
+
+.word {
+  padding-left: 7px;
 }
 
 .todo {
@@ -31,6 +38,15 @@
 
 .icons {
   display: flex;
-  flex-direction: row;
   margin-left: auto;
+}
+
+.user {
+  background-color: transparent;
+  border: none;
+}
+
+.userword {
+  font-size: 15px;
+  font-weight: 500;
 }

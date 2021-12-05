@@ -12,7 +12,7 @@ const NoteState = (props) => {
         method: 'GET',
         headers: {
           token:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbkRhdGEiOjE5LCJpYXQiOjE2MzgzNjIxMzF9.1tIcGBoZJLvapp4H8lgdyXS7XOifB5mOltQJxnr74C0',
+            localStorage.getItem('token'),
         },
       })
 
@@ -33,7 +33,7 @@ const NoteState = (props) => {
         headers: {
           'Content-type': 'application/json',
           token:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbkRhdGEiOjE5LCJpYXQiOjE2MzgzNjIxMzF9.1tIcGBoZJLvapp4H8lgdyXS7XOifB5mOltQJxnr74C0',
+            localStorage.getItem('token'),
         },
         body: JSON.stringify({ title, description, tag }),
       })
@@ -52,7 +52,7 @@ const NoteState = (props) => {
         method: 'DELETE',
         headers: {
           token:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbkRhdGEiOjE5LCJpYXQiOjE2MzgzNjIxMzF9.1tIcGBoZJLvapp4H8lgdyXS7XOifB5mOltQJxnr74C0',
+            localStorage.getItem('token'),
         },
       })
       const newNote = notes.filter((note) => {
@@ -75,21 +75,23 @@ const NoteState = (props) => {
         headers: {
           'Content-type': 'application/json',
           token:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbkRhdGEiOjE5LCJpYXQiOjE2MzgzNjIxMzF9.1tIcGBoZJLvapp4H8lgdyXS7XOifB5mOltQJxnr74C0',
+            localStorage.getItem('token'),
         },
         body: JSON.stringify({ title, description, tag }),
       })
       // const parseRes = await response.json()
-      for (let index = 0; index < notes.length; index++) {
-        const element = notes[index]
+      let newNotes = JSON.parse(JSON.stringify(notes))
+
+      for (let index = 0; index < newNotes.length; index++) {
+        const element = newNotes[index]
         if (element.card_id === card_id) {
-          element.title = title
-          element.description = description
-          element.tag = tag
+          newNotes[index].title = title
+          newNotes[index].description = description
+          newNotes[index].tag = tag
           break
         }
       }
-      fetchNote()
+      setNotes(newNotes)
     } catch (err) {
       alert(err)
       console.error(err.message)

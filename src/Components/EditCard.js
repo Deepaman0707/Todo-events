@@ -7,7 +7,7 @@ import '../Styles/AddCard.css'
 const EditCard = (props) => {
   const context = useContext(noteContext)
   const { editNote } = context
-  const { note } = props
+  const { note, showAlert } = props
 
   const [data, setData] = useState({
     title: note.title,
@@ -19,6 +19,7 @@ const EditCard = (props) => {
     e.preventDefault()
     editNote(note.card_id, data.title, data.description, data.tag)
     props.handleClose()
+    showAlert('Success', 'Successfully edited the note!')
   }
 
   const onChange = (e) => {
@@ -69,6 +70,7 @@ const EditCard = (props) => {
         <div className='fields'>
           <Button
             className='submit'
+            disabled={data.title.length < 3 || data.description.length < 3}
             disableElevation
             variant='contained'
             onClick={handleSubmit}
