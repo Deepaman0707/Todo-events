@@ -8,7 +8,7 @@ const NoteState = (props) => {
 
   const fetchNote = async () => {
     try {
-      const response = await fetch('http://localhost:4000/notes/fetchnotes', {
+      const response = await fetch('https://todo-event-database.herokuapp.com/notes/fetchnotes', {
         method: 'GET',
         headers: {
           token:
@@ -28,7 +28,7 @@ const NoteState = (props) => {
 
   const addNote = async (title, description, tag) => {
     try {
-      await fetch('http://localhost:4000/notes/createnote', {
+      await fetch('https://todo-event-database.herokuapp.com/notes/createnote', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -48,7 +48,7 @@ const NoteState = (props) => {
 
   const deleteNote = async (card_id) => {
     try {
-      await fetch(`http://localhost:4000/notes/deletenote/${card_id}`, {
+      await fetch(`https://todo-event-database.herokuapp.com/notes/deletenote/${card_id}`, {
         method: 'DELETE',
         headers: {
           token:
@@ -70,7 +70,7 @@ const NoteState = (props) => {
   const editNote = async (card_id, title, description, tag) => {
     try {
       // const response =
-      await fetch(`http://localhost:4000/notes/updatenote/${card_id}`, {
+      await fetch(`https://todo-event-database.herokuapp.com/notes/updatenote/${card_id}`, {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json',

@@ -17,17 +17,20 @@ function SignUp(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:4000/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        Name: user.Name,
-        Email: user.Email,
-        Password: user.Password,
-      }),
-    })
+    const response = await fetch(
+      'https://todo-event-database.herokuapp.com/auth/register',
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          Name: user.Name,
+          Email: user.Email,
+          Password: user.Password,
+        }),
+      }
+    )
     const json = await response.json()
     console.log(json)
     if (json.success === true) {
