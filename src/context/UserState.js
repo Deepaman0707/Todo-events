@@ -5,12 +5,15 @@ function UserState(props) {
   const [user, setUser] = useState([])
   const fetchUser = async () => {
     try {
-      const response = await fetch('http://localhost:4000/auth/details', {
-        method: 'POST',
-        headers: {
-          token: localStorage.getItem('token'),
-        },
-      })
+      const response = await fetch(
+        'https://todo-event-database.herokuapp.com/auth/details',
+        {
+          method: 'POST',
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
 
       const parseRes = await response.json()
       setUser(parseRes)

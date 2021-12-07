@@ -15,13 +15,16 @@ function Login(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:4000/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({ Email: user.Email, Password: user.Password }),
-    })
+    const response = await fetch(
+      'https://todo-event-database.herokuapp.com/auth/login',
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ Email: user.Email, Password: user.Password }),
+      }
+    )
     const json = await response.json()
     if (json.success === true) {
       localStorage.setItem('token', json.authToken)

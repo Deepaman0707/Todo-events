@@ -5,7 +5,7 @@ body {
     sans-serif;
 
   background-color: rgb(255, 253, 249);
-  background-image: url(C:\Users\deepa\Desktop\todo\src\images\84248.png);
+  background-image: url('images/background.png');
   background-attachment: fixed;
   background-size: 2000px;
   background-repeat: no-repeat;
