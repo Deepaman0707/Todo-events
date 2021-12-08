@@ -1,0 +1,9 @@
+.aboutBox {
+  background-color: white;
+  margin: 5vw 10vw;
+  padding: 4vw 10vw 5vw 10vw;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
