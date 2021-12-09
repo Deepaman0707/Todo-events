@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import '../Styles/Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 
 function Login(props) {
@@ -40,11 +39,9 @@ function Login(props) {
   }
 
   return (
-    <div className='box'>
-      <form className='login' onSubmit={handleSubmit}>
-        <p className='heading'>
-          <strong>Log In</strong>
-        </p>
+    <div className='loginbox'>
+      <p className='heading'>Log In</p>
+      <form onSubmit={handleSubmit}>
         <div className='fields'>
           <TextField
             className='text'
@@ -71,25 +68,23 @@ function Login(props) {
             required
           />
         </div>
-        <div className='fields'>
-          <Button
-            type='submit'
+        <div className='buttonfields'>
+          <button
             className='submit'
+            type='submit'
             disableElevation
             variant='contained'
           >
-            Log In
-          </Button>
+            <p>Log In</p>
+          </button>
           <div className='signup'>
-            <p>Create new account </p>
-            <Link className='signupbox' to='/signup'>
-              <div className='signupbox'>
-                <div className='signupicon'>
-                  <PersonAddIcon fontSize='small' />
-                </div>
-                <div>Sign Up</div>
-              </div>
-            </Link>
+            <div>Create new account</div>
+            <div className='signuplink'>
+              <Link to='/signup'>
+                <PersonAddIcon fontSize='small' color='primary' />
+              </Link>
+              <div>Sign Up</div>
+            </div>
           </div>
         </div>
       </form>

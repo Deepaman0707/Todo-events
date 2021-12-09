@@ -1,9 +1,80 @@
 .aboutBox {
   background-color: white;
-  margin: 5vw 10vw;
-  padding: 4vw 10vw 5vw 10vw;
   border-radius: 10px;
-  font-size: 25px;
-  font-weight: 500;
 }
 
+.aboutPage {
+  display: flex;
+  align-items: center;
+}
+
+.aboutheading {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .aboutBox {
+    width: 280px;
+    margin: 70px auto;
+    padding: 4vw 8% 5vw;
+    font-size: 13px;
+  }
+  .aboutPage {
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
+  .pagelogo {
+    height: 100px;
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .aboutBox {
+    margin: 150px 3vw 0;
+    padding: 5vw 8% 5vw;
+    font-size: 15px;
+  }
+  .aboutPage {
+    font-size: 15px;
+    margin-bottom: 35px;
+  }
+  .pagelogo {
+    height: 120px;
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .aboutBox {
+    margin: 150px 6vw 0;
+    padding: 4vw 8% 5vw;
+    font-size: 15px;
+  }
+  .aboutPage {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+  .pagelogo {
+    height: 130px;
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .aboutBox {
+    width: 700px;
+    margin: 100px auto 0 auto;
+    padding: 70px 8% 40px;
+    font-size: 20px;
+  }
+  .aboutPage {
+    font-size: 18px;
+    margin-bottom: 50px;
+  }
+  .pagelogo {
+    height: 150px;
+    padding-right: 50px;
+  }
+}

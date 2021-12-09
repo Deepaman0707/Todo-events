@@ -1,18 +1,14 @@
 .navbar {
   display: flex;
-  list-style: none;
-  padding: 0 35px;
   background-color: rgb(30, 12, 58);
-  font-size: 15px;
   font-weight: 600;
   align-items: center;
-  height: 60px;
+  height: 65px;
 }
 
 .option {
   display: flex;
   align-items: center;
-  margin-left: 30px;
   text-decoration: none;
   color: rgb(194, 194, 194);
   cursor: pointer;
@@ -20,12 +16,6 @@
 
 .word {
   padding-left: 7px;
-}
-
-.todo {
-  font-size: large;
-  text-decoration: none;
-  color: rgb(255, 255, 255);
 }
 
 .option:hover {
@@ -49,4 +39,79 @@
 .userword {
   font-size: 15px;
   font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    font-size: 10px;
+    padding: 0 15px 0 0;
+  }
+  .todo {
+    height: 40px;
+    padding: 0 0 0 10px;
+  }
+  .option {
+    margin-left: 18px;
+  }
+  .word {
+    display: none;
+  }
+  .icons {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar {
+    font-size: 13px;
+    padding: 0 20px 0 10px;
+  }
+  .todo {
+    height: 40px;
+    padding: 0 10px;
+  }
+  .option {
+    margin-left: 15px;
+  }
+  .icons {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar {
+    font-size: 15px;
+    padding: 0 20px 0 10px;
+  }
+  .todo {
+    height: 45px;
+    padding: 0 10px;
+  }
+  .option {
+    margin-left: 20px;
+  }
+  .icons {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .navbar {
+    font-size: 18px;
+    padding: 0 20px 0 10px;
+  }
+  .todo {
+    height: 50px;
+    padding: 0 10px;
+  }
+  .option {
+    margin-left: 25px;
+  }
+  .icons {
+    display: flex;
+    margin-left: auto;
+  }
 }

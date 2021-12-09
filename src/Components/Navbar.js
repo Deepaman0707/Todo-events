@@ -10,6 +10,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
 import UserDetail from './UserDetail'
+import getsetgo from '../images/getsetgo.png'
 
 function Navbar() {
   const location = useLocation()
@@ -19,8 +20,8 @@ function Navbar() {
   const handleClose = () => setOpen(false)
   return (
     <header className='navbar'>
-      <h1 className='todo'>To-Do</h1>
-
+      <img className='todo' src={getsetgo} alt='GetSetGo' />
+      
       <Link
         className={`option ${location.pathname === '/' ? 'active' : ''}`}
         to='/'
