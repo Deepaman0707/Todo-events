@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import '../Styles/Login.css'
 import { Link, useNavigate } from 'react-router-dom'
-import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import LoginIcon from '@mui/icons-material/Login'
-
 
 function SignUp(props) {
   const [user, setUser] = useState({
@@ -50,11 +48,9 @@ function SignUp(props) {
   }
 
   return (
-    <div className='box'>
-      <form className='login' onSubmit={handleSubmit}>
-        <p className='heading'>
-          <strong>Sign Up</strong>
-        </p>
+    <div className='loginbox'>
+      <p className='heading'>Sign Up</p>
+      <form onSubmit={handleSubmit}>
         <div className='fields'>
           <TextField
             className='text'
@@ -94,25 +90,23 @@ function SignUp(props) {
             required
           />
         </div>
-        <div className='fields'>
-          <Button
+        <div className='buttonfields'>
+          <button
             type='submit'
             className='submit'
             disableElevation
             variant='contained'
           >
-            Sign Up
-          </Button>
+            <p>Sign Up</p>
+          </button>
           <div className='signup'>
-            <p>Already have an account</p>
-            <Link className='signupbox' to='/login'>
-              <div className='signupbox'>
-                <div className='signupicon'>
-                  <LoginIcon fontSize='small' />
-                </div>
-                <div>Log In</div>
-              </div>
-            </Link>
+            <div>Already have an account</div>
+            <div className='signuplink'>
+              <Link to='/login'>
+                <LoginIcon fontSize='small' color='primary' />
+              </Link>
+              <div>Log In</div>
+            </div>
           </div>
         </div>
       </form>
