@@ -3,10 +3,6 @@
   justify-content: center;
 }
 
-.card {
-  width: 75vw;
-}
-
 .header {
   font-weight: bold;
 }
@@ -30,4 +26,28 @@
 
 .icons:hover {
   color: black;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 350px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .card {
+    width: 450px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .card {
+    width: 450px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .card {
+    width: 450px;
+  }
 }
