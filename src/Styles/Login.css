@@ -27,10 +27,21 @@
   margin: 10px 5px 5px 10px;
 }
 
+.sign {
+  margin-left: auto;
+}
+
 .signuplink {
   display: flex;
-  margin-left: auto;
   color: blue;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.text {
+  padding-left: 10px;
 }
 
 @media only screen and (max-width: 600px) {
