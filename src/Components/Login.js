@@ -79,11 +79,13 @@ function Login(props) {
           </button>
           <div className='signup'>
             <div>Create new account</div>
-            <div className='signuplink'>
-              <Link to='/signup'>
-                <PersonAddIcon fontSize='small' color='primary' />
+            <div className='sign'>
+              <Link className='link' to='/signup'>
+                <div className='signuplink'>
+                  <PersonAddIcon fontSize='small' color='primary' />
+                  <div className='text'>Sign Up</div>
+                </div>
               </Link>
-              <div>Sign Up</div>
             </div>
           </div>
         </div>

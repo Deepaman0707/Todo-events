@@ -101,11 +101,13 @@ function SignUp(props) {
           </button>
           <div className='signup'>
             <div>Already have an account</div>
-            <div className='signuplink'>
-              <Link to='/login'>
-                <LoginIcon fontSize='small' color='primary' />
+            <div className='sign'>
+              <Link className='link' to='/login'>
+                <div className='signuplink'>
+                  <LoginIcon fontSize='small' color='primary' />
+                  <div className='text'>Log In</div>
+                </div>
               </Link>
-              <div>Log In</div>
             </div>
           </div>
         </div>
