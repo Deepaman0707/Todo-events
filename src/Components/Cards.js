@@ -10,32 +10,50 @@ const Cards = (props) => {
   const context = useContext(noteContext)
   const { notes, fetchNote } = context
   const { showAlert } = props
+
   useEffect(() => {
-    if (localStorage.getItem('token')) fetchNote()
-    else navigate('/login')
+    if (localStorage.getItem('token')) {
+      fetchNote()
+    } else navigate('/login')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   let count = 0
   return (
-    <div className='gridbox'>
-      <Grid container>
-        {notes.map((note) => {
-          return (
-            <Grid
-              key={(count = count + 1)}
-              className='grid'
-              item
-              sm={12}
-              md={6}
-              lg={4}
-            >
-              <CardItem key={note.card_id} showAlert={showAlert} note={note} />
-            </Grid>
-          )
-        })}
-      </Grid>
-    </div>
+        <>
+          {notes.length === 0 ? (
+            <div className='nocards'>
+              <div className='hello'>
+                Haven't planned your day ? <br /> Start by creating a new note !
+                <br />
+                Have a great day !
+              </div>
+            </div>
+          ) : (
+            <div className='gridbox'>
+              <Grid container>
+                {notes.map((note) => {
+                  return (
+                    <Grid
+                      key={(count = count + 1)}
+                      className='grid'
+                      item
+                      sm={12}
+                      md={6}
+                      lg={4}
+                    >
+                      <CardItem
+                        key={note.card_id}
+                        showAlert={showAlert}
+                        note={note}
+                      />
+                    </Grid>
+                  )
+                })}
+              </Grid>
+            </div>
+          )}
+        </>
   )
 }
 

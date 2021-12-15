@@ -6,8 +6,6 @@ import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
 import AddIcon from '@mui/icons-material/Add'
 
-// import noteContext from '../context/noteContext'
-
 const Home = (props) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -15,12 +13,14 @@ const Home = (props) => {
   const { showAlert } = props
   return (
     <div className='container'>
-      <div className='cardbox'>
+      <div className='cards'>
         <Cards showAlert={showAlert} />
       </div>
-      <button className='addcard' onClick={handleOpen}>
-        <AddIcon style={{ fontSize: '30px' }} />
-      </button>
+      <div className='add'>
+        <button className='addcard' onClick={handleOpen}>
+          <AddIcon style={{ fontSize: '30px' }} />
+        </button>
+      </div>
       <Modal
         open={open}
         onClose={handleClose}

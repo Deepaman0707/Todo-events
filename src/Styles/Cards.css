@@ -1,3 +1,16 @@
+.nocards {
+  text-align: center;
+  width: 500px;
+  color: white;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.hello{
+  font-size: 25px;
+  font-weight: 500;
+}
+
 @media only screen and (max-width: 600px) {
   .grid {
     padding: 10px;
