@@ -3,6 +3,7 @@ import '../Styles/Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import TextField from '@mui/material/TextField'
 import LoginIcon from '@mui/icons-material/Login'
+import ReactLoading from 'react-loading'
 
 function SignUp(props) {
   const [user, setUser] = useState({
@@ -11,10 +12,14 @@ function SignUp(props) {
     Password: '',
   })
 
+  const [loading, setLoading] = useState(false)
+
   let history = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
+
     const response = await fetch(
       'https://todo-event-database.herokuapp.com/auth/register',
       {
@@ -34,6 +39,7 @@ function SignUp(props) {
     if (json.success === true) {
       localStorage.setItem('token', json.authToken)
       history('/')
+      setLoading(false)
       props.showAlert('Success', 'Registered your account successfully! ')
     } else {
       props.showAlert(
@@ -48,70 +54,82 @@ function SignUp(props) {
   }
 
   return (
-    <div className='loginbox'>
-      <p className='heading'>Sign Up</p>
-      <form onSubmit={handleSubmit}>
-        <div className='fields'>
-          <TextField
-            className='text'
-            id='name'
-            label='Name'
-            variant='outlined'
-            type='text'
-            name='Name'
-            value={user.Name}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className='fields'>
-          <TextField
-            className='text'
-            id='email'
-            label='E-mail'
-            variant='outlined'
-            type='text'
-            name='Email'
-            value={user.Email}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className='fields'>
-          <TextField
-            className='text'
-            id='password'
-            label='Password'
-            variant='outlined'
-            type='Password'
-            name='Password'
-            value={user.Password}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className='buttonfields'>
-          <button
-            type='submit'
-            className='submit'
-            disableElevation
-            variant='contained'
-          >
-            <p>Sign Up</p>
-          </button>
-          <div className='signup'>
-            <div>Already have an account</div>
-            <div className='sign'>
-              <Link className='link' to='/login'>
-                <div className='signuplink'>
-                  <LoginIcon fontSize='small' color='primary' />
-                  <div className='text'>Log In</div>
-                </div>
-              </Link>
+    <div>
+      {loading ? (
+        <div class='outer'>
+          <div class='middle'>
+            <div class='inner'>
+              <ReactLoading type={'spinningBubbles'} color='#fff' />
             </div>
           </div>
         </div>
-      </form>
+      ) : (
+        <div className='loginbox'>
+          <p className='heading'>Sign Up</p>
+          <form onSubmit={handleSubmit}>
+            <div className='fields'>
+              <TextField
+                className='text'
+                id='name'
+                label='Name'
+                variant='outlined'
+                type='text'
+                name='Name'
+                value={user.Name}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className='fields'>
+              <TextField
+                className='text'
+                id='email'
+                label='E-mail'
+                variant='outlined'
+                type='text'
+                name='Email'
+                value={user.Email}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className='fields'>
+              <TextField
+                className='text'
+                id='password'
+                label='Password'
+                variant='outlined'
+                type='Password'
+                name='Password'
+                value={user.Password}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className='buttonfields'>
+              <button
+                type='submit'
+                className='submit'
+                disableElevation
+                variant='contained'
+              >
+                <p>Sign Up</p>
+              </button>
+              <div className='signup'>
+                <div>Already have an account</div>
+                <div className='sign'>
+                  <Link className='link' to='/login'>
+                    <div className='signuplink'>
+                      <LoginIcon fontSize='small' color='primary' />
+                      <div className='text'>Log In</div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   )
 }
